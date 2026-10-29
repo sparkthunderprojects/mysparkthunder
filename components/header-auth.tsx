@@ -34,10 +34,10 @@ export default function HeaderAuth() {
 
   return (
     <div className="flex items-center gap-2">
-      <Link href="/login" className={buttonClass('ghost', 'hidden px-3 py-2 sm:inline-flex')}>
+      <Link href="/login" className={buttonClass('ghost', 'whitespace-nowrap px-2 py-2 sm:px-3')}>
         Sign in
       </Link>
-      <Link href="/signup" className={buttonClass('primary', 'whitespace-nowrap px-4 py-2')}>
+      <Link href="/signup" className={buttonClass('primary', 'hidden whitespace-nowrap px-4 py-2 sm:inline-flex')}>
         Create account
       </Link>
     </div>

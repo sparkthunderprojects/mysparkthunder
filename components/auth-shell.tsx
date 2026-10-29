@@ -15,7 +15,7 @@ export default function AuthShell({
   footer?: React.ReactNode;
 }) {
   return (
-    <div className="grid min-h-[calc(100svh-4rem)] lg:grid-cols-[1.1fr_1fr]">
+    <div className="grid min-h-[calc(100svh-8.5rem)] lg:grid-cols-[1.1fr_1fr]">
       <div className="hero-stage hidden items-end p-12 lg:flex" aria-hidden="true">
         <HeroBolt />
         <div className="hero-flash" />

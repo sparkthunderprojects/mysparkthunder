@@ -48,7 +48,7 @@ export default function HomePage() {
     <>
       <JsonLd data={[organizationLd, websiteLd]} />
 
-      <section className="hero-stage -mt-px flex min-h-[calc(100svh-4rem)] flex-col justify-end">
+      <section className="hero-stage -mt-px flex min-h-[calc(100svh-8.5rem)] flex-col justify-end">
         <HeroBolt />
         <div className="hero-flash" aria-hidden="true" />
         <div className="relative z-[4] mx-auto w-full max-w-6xl px-5 pb-14 pt-40 text-center sm:pb-20">
