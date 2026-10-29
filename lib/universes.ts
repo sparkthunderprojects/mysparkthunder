@@ -44,6 +44,7 @@ export const UNIVERSES: Universe[] = [
     url: null,
     status: 'in-development',
     accent: '#8B6CF0',
+    logo: { src: '/universes/occult-inc-logo.png', width: 900, height: 329 },
   },
   {
     slug: 'grim-gala',
