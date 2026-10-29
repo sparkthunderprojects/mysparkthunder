@@ -13,7 +13,7 @@ const LINKS = [
 export default function SiteFooter() {
   const live = UNIVERSES.filter((u) => u.status === 'live' && u.url);
   return (
-    <footer className="mt-24 border-t border-line bg-panel">
+    <footer className="border-t border-line bg-gradient-to-b from-ink to-panel">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-3">
           <Logo />

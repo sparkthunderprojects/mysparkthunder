@@ -1,42 +1,56 @@
+import type { CSSProperties } from 'react';
+import UniverseArt from '@/components/universe-art';
+import { cn } from '@/lib/utils';
 import type { Universe } from '@/lib/universes';
 
-/** A tall poster tile for one universe. Each carries its own accent colour. */
-export default function UniversePoster({ universe }: { universe: Universe }) {
+/** A one-sheet for a universe: its own key art, title and release status. */
+export default function UniversePoster({
+  universe,
+  heading = 'h2',
+  className,
+}: {
+  universe: Universe;
+  heading?: 'h2' | 'h3';
+  className?: string;
+}) {
   const live = universe.status === 'live' && universe.url;
+  const Heading = heading;
   const body = (
     <div
-      className="relative flex aspect-[3/4] flex-col justify-end overflow-hidden border border-line bg-panel p-6 transition-colors group-hover:border-bone/40"
-      style={{ borderTopColor: universe.accent, borderTopWidth: 3 }}
+      className={cn('poster flex h-full min-h-[26rem] flex-col justify-end p-6 sm:min-h-[30rem] lg:min-h-[38rem]', className)}
+      style={{ '--accent': universe.accent } as CSSProperties}
     >
+      <UniverseArt slug={universe.slug} />
       <div
         aria-hidden="true"
-        className="absolute inset-0 opacity-60"
-        style={{
-          background: `radial-gradient(120% 70% at 50% 0%, ${universe.accent}26, transparent 70%)`,
-        }}
+        className="absolute inset-0 z-[1] bg-gradient-to-t from-ink via-ink/55 to-transparent"
       />
-      <div className="relative">
-        <h2 className="text-4xl font-extrabold leading-[0.95] sm:text-5xl">{universe.name}</h2>
+      <p className="absolute left-6 top-6 z-[2] flex items-center gap-2 text-sm font-medium">
+        <span
+          aria-hidden="true"
+          className="h-2 w-2 rounded-full"
+          style={{
+            background: live ? universe.accent : 'transparent',
+            border: `1.5px solid ${universe.accent}`,
+            boxShadow: live ? `0 0 12px ${universe.accent}` : undefined,
+          }}
+        />
+        <span className={live ? 'text-bone' : 'text-dim'}>{live ? 'Open now' : 'In development'}</span>
+      </p>
+      <div className="relative z-[2]">
+        <Heading className="text-5xl font-black uppercase leading-[0.88] sm:text-6xl lg:text-[2.6rem]">{universe.name}</Heading>
         {universe.tagline !== 'In development.' && (
-          <p className="mt-3 text-sm leading-relaxed text-dim">{universe.tagline}</p>
+          <p className="mt-4 max-w-[22rem] text-sm leading-relaxed text-bone/75">{universe.tagline}</p>
         )}
-        <p className="mt-4 flex items-center gap-2 text-sm font-medium">
-          <span
-            aria-hidden="true"
-            className="h-2 w-2 rounded-full"
-            style={{ background: live ? universe.accent : 'transparent', border: `1.5px solid ${universe.accent}` }}
-          />
-          <span className={live ? 'text-bone' : 'text-dim'}>{live ? 'Open now' : 'In development'}</span>
-        </p>
       </div>
     </div>
   );
 
   return live ? (
-    <a href={universe.url as string} className="group block" aria-label={`Visit ${universe.name}`}>
+    <a href={universe.url as string} className="group block h-full" aria-label={`Visit ${universe.name}`}>
       {body}
     </a>
   ) : (
-    <div className="group block">{body}</div>
+    <div className="block h-full">{body}</div>
   );
 }

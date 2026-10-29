@@ -4,11 +4,12 @@ import { cn } from '@/lib/utils';
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded px-5 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60';
+  'inline-flex items-center justify-center gap-2 rounded px-6 py-3 text-sm font-bold tracking-wide transition-all disabled:cursor-not-allowed disabled:opacity-60';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-volt text-ink hover:bg-arc',
-  secondary: 'border border-line text-bone hover:border-volt hover:text-volt',
+  primary: 'btn-gold text-ink',
+  secondary:
+    'border border-bone/25 bg-ink/40 text-bone backdrop-blur hover:border-volt hover:text-volt hover:shadow-[0_0_28px_-8px_hsl(var(--volt)/0.7)]',
   danger: 'bg-danger text-ink hover:opacity-90',
   ghost: 'text-dim hover:text-bone',
 };
@@ -44,7 +45,7 @@ export function Button({
 }
 
 export const inputClass =
-  'w-full rounded border border-line bg-raised px-4 py-3 text-sm text-bone placeholder:text-dim focus:border-volt focus:outline-none';
+  'w-full rounded border border-line bg-raised/70 px-4 py-3 text-sm text-bone placeholder:text-dim focus:border-volt focus:shadow-[0_0_0_3px_hsl(var(--volt)/0.18)] focus:outline-none';
 
 export function Field({
   label,
@@ -111,7 +112,7 @@ export function EmptyState({
 export function PageHeading({ title, intro }: { title: string; intro?: string }) {
   return (
     <header className="mb-8 max-w-prose">
-      <h1 className="text-4xl font-extrabold sm:text-5xl">{title}</h1>
+      <h1 className="text-5xl font-black uppercase leading-[0.92] sm:text-6xl">{title}</h1>
       {intro && <p className="mt-3 leading-relaxed text-dim">{intro}</p>}
     </header>
   );

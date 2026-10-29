@@ -11,7 +11,7 @@ const NAV = [
 
 export default function SiteHeader() {
   return (
-    <header className="border-b border-line bg-ink">
+    <header className="sticky top-0 z-40 border-b border-line/60 bg-ink/70 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
         <div className="flex items-center gap-8">
           <Logo />
@@ -46,6 +46,9 @@ export default function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
+              <Link href="/login" className="block rounded px-3 py-2 text-sm text-bone hover:bg-raised sm:hidden">
+                Sign in
+              </Link>
             </nav>
           </details>
         </div>

@@ -1,23 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import { Big_Shoulders_Display, Hanken_Grotesk } from 'next/font/google';
+import '@fontsource/big-shoulders-display/latin-600';
+import '@fontsource/big-shoulders-display/latin-800';
+import '@fontsource/big-shoulders-display/latin-900';
+import '@fontsource-variable/hanken-grotesk';
 import './globals.css';
 import { SITE_URL } from '@/lib/config';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/site';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
-
-const display = Big_Shoulders_Display({
-  subsets: ['latin'],
-  weight: ['600', '800'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const body = Hanken_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-body',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,13 +20,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#090b10',
+  themeColor: '#05060a',
   colorScheme: 'dark',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${display.variable} ${body.variable}`}>
+    <html lang="en-GB">
       <body>
         <a
           href="#main"

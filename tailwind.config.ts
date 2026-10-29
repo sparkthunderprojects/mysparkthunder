@@ -22,8 +22,8 @@ const config: Config = {
         ok: 'hsl(var(--ok) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Impact', 'sans-serif'],
-        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['"Big Shoulders Display"', 'Impact', 'sans-serif'],
+        sans: ['"Hanken Grotesk Variable"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '2px',
