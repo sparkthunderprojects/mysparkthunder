@@ -10,6 +10,8 @@ export interface Universe {
   status: UniverseStatus;
   /** Accent colour used on this universe's poster. */
   accent: string;
+  /** Optional wordmark image shown on the poster in place of the plain title. */
+  logo?: { src: string; width: number; height: number };
 }
 
 /**
@@ -25,6 +27,7 @@ export const UNIVERSES: Universe[] = [
     url: 'https://knightverge.com',
     status: 'live',
     accent: '#F0B429',
+    logo: { src: '/universes/knightverge-logo.png', width: 900, height: 201 },
   },
   {
     slug: 'knightverge-legacy',

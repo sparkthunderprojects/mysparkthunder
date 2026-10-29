@@ -38,7 +38,20 @@ export default function UniversePoster({
         <span className={live ? 'text-bone' : 'text-dim'}>{live ? 'Open now' : 'In development'}</span>
       </p>
       <div className="relative z-[2]">
-        <Heading className="text-5xl font-black uppercase leading-[0.88] sm:text-6xl lg:text-[2.6rem]">{universe.name}</Heading>
+        {universe.logo ? (
+          <Heading className="drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={universe.logo.src}
+              alt={universe.name}
+              width={universe.logo.width}
+              height={universe.logo.height}
+              className="h-auto w-full max-w-[22rem]"
+            />
+          </Heading>
+        ) : (
+          <Heading className="text-5xl font-black uppercase leading-[0.88] sm:text-6xl lg:text-[2.6rem]">{universe.name}</Heading>
+        )}
         {universe.tagline !== 'In development.' && (
           <p className="mt-4 max-w-[22rem] text-sm leading-relaxed text-bone/75">{universe.tagline}</p>
         )}
