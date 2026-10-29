@@ -1,0 +1,10 @@
+{
+  "name": "mysparkthunder",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-19",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}

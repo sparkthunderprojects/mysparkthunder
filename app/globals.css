@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Brand colours. Change the look of the whole site here.
+  Values are HSL triplets (hue saturation lightness).
+*/
+:root {
+  --ink: 226 32% 5%;      /* page background */
+  --panel: 226 28% 8%;    /* raised sections */
+  --raised: 226 24% 12%;  /* inputs, hover fills */
+  --line: 226 18% 20%;    /* borders */
+  --bone: 40 18% 90%;     /* main text */
+  --dim: 225 10% 64%;     /* secondary text */
+  --volt: 42 94% 58%;     /* signature gold */
+  --arc: 200 100% 95%;    /* cold white of the lightning */
+  --danger: 0 72% 62%;
+  --ok: 152 55% 52%;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    background: hsl(var(--ink));
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink font-sans text-bone antialiased;
+    min-height: 100vh;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    letter-spacing: 0.005em;
+  }
+  a {
+    @apply transition-colors;
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--volt));
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: hsl(var(--volt) / 0.35);
+  }
+}
+
+/* The one moment of motion: the bolt wipes across the universe network,
+   then each universe lights up in turn. */
+@keyframes bolt-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes node-ignite {
+  from {
+    opacity: 0.3;
+    box-shadow: none;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bolt-wipe {
+  animation: bolt-wipe 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both;
+  filter: drop-shadow(0 0 5px hsl(var(--volt) / 0.65));
+}
+
+.node-ignite {
+  animation: node-ignite 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .bolt-wipe,
+  .node-ignite {
+    animation: none;
+  }
+}
