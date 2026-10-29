@@ -9,8 +9,9 @@
  * variables can't be used, paste the two values into FALLBACK_URL and
  * FALLBACK_ANON_KEY below instead.
  */
-const FALLBACK_URL = '';
-const FALLBACK_ANON_KEY = '';
+const FALLBACK_URL = 'https://cxfrktbatcclkkixvqjq.supabase.co';
+const FALLBACK_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4ZnJrdGJhdGNjbGtraXh2cWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzMDUzNjksImV4cCI6MjEwODg4MTM2OX0.YwDNdj8hSt-9NYHXUK4WJ9Cod3hqaRh9TMM5pxl8XgU';
 
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_MYSPARKTHUNDER_SUPABASE_URL || FALLBACK_URL;
 export const SUPABASE_ANON_KEY =
