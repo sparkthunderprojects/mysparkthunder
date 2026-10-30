@@ -101,10 +101,12 @@ export function EmptyState({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="border border-dashed border-line px-6 py-10">
-      <h2 className="text-2xl font-semibold">{title}</h2>
-      <p className="mt-2 max-w-prose text-sm leading-relaxed text-dim">{children}</p>
-      {action && <div className="mt-5">{action}</div>}
+    <div className="frame frame-neutral">
+      <div className="frame-in bg-panel/60 px-6 py-10">
+        <h2 className="text-2xl font-semibold">{title}</h2>
+        <p className="mt-2 max-w-prose text-sm leading-relaxed text-dim">{children}</p>
+        {action && <div className="mt-5">{action}</div>}
+      </div>
     </div>
   );
 }

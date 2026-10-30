@@ -12,6 +12,8 @@ export interface Universe {
   accent: string;
   /** Optional wordmark image shown on the poster in place of the plain title. */
   logo?: { src: string; width: number; height: number };
+  /** Address of this universe's page in the Sparkthunder Shop. Leave null until the shop opens. */
+  shopUrl?: string | null;
 }
 
 /**

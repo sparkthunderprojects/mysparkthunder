@@ -126,24 +126,57 @@ body::after {
     animation: hero-rise 1s ease-out 1.1s both;
   }
 
-  /* ---------- Posters ---------- */
-  .poster {
-    --accent: #f0b429;
+  /* ---------- Angled-corner frames ----------
+     A comic-panel frame with two cut corners. The outer element is the 1px
+     line, the inner element is the face. Set --accent to colour the line. */
+  .frame {
+    --cut: 20px;
+    padding: 1px;
+    background: color-mix(in srgb, var(--accent, #f0b429) 45%, hsl(var(--ink)));
+    clip-path: polygon(
+      var(--cut) 0,
+      100% 0,
+      100% calc(100% - var(--cut)),
+      calc(100% - var(--cut)) 100%,
+      0 100%,
+      0 var(--cut)
+    );
+    transition: background 0.3s;
+  }
+  .frame-in {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    border-radius: 3px;
-    border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+    height: 100%;
     background: hsl(var(--ink));
-    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s, box-shadow 0.45s;
+    clip-path: polygon(
+      calc(var(--cut) - 0.59px) 0,
+      100% 0,
+      100% calc(100% - var(--cut) + 0.59px),
+      calc(100% - var(--cut) + 0.59px) 100%,
+      0 100%,
+      0 calc(var(--cut) - 0.59px)
+    );
   }
-  .poster:hover,
-  a:focus-visible .poster {
+  .frame-neutral {
+    background: hsl(var(--line));
+  }
+
+  /* ---------- Posters ---------- */
+  .poster-wrap {
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.45s;
+  }
+  .poster-wrap:hover,
+  .poster-wrap:focus-within {
     transform: translateY(-6px);
-    border-color: color-mix(in srgb, var(--accent) 80%, transparent);
-    box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--accent) 55%, transparent);
+    filter: drop-shadow(0 22px 26px color-mix(in srgb, var(--accent, #f0b429) 40%, transparent));
   }
-  .poster::after {
+  .poster-wrap:hover .frame,
+  .poster-wrap:focus-within .frame {
+    background: color-mix(in srgb, var(--accent, #f0b429) 90%, hsl(var(--ink)));
+  }
+  .poster-in::after {
     /* light sweep across the one-sheet when it is hovered */
     content: '';
     position: absolute;
@@ -154,9 +187,22 @@ body::after {
     transform: translateX(-60%);
     transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .poster:hover::after,
-  a:focus-visible .poster::after {
+  .poster-wrap:hover .poster-in::after {
     transform: translateX(60%);
+  }
+
+  /* ---------- Outlined name band ---------- */
+  .band-text {
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+
+  /* ---------- Carousel ---------- */
+  .carousel-track {
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar {
+    display: none;
   }
 
   /* ---------- Buttons ---------- */
@@ -237,10 +283,13 @@ body::after {
   .hero-flare,
   .title-lit,
   .hero-rise,
-  .poster,
-  .poster::after {
+  .poster-wrap,
+  .poster-in::after {
     animation: none !important;
     transition: none !important;
+  }
+  .carousel-track {
+    scroll-behavior: auto !important;
   }
   .bolt-line {
     stroke-dashoffset: 0;

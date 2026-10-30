@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/json-ld';
+import FeaturedCarousel from '@/components/featured-carousel';
+import FeaturedSlide from '@/components/featured-slide';
 import HeroBolt from '@/components/hero-bolt';
+import NameBand from '@/components/name-band';
 import UniversePoster from '@/components/universe-poster';
 import { ButtonLink } from '@/components/ui';
 import { FAQ } from '@/lib/faq';
@@ -71,6 +74,17 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section aria-labelledby="featured-heading" className="mx-auto max-w-6xl px-5 pt-20">
+        <h2 id="featured-heading" className="mb-8 text-5xl font-black uppercase leading-none sm:text-7xl">
+          Featured
+        </h2>
+        <FeaturedCarousel count={UNIVERSES.length}>
+          {UNIVERSES.map((universe, i) => (
+            <FeaturedSlide key={universe.slug} universe={universe} index={i} total={UNIVERSES.length} />
+          ))}
+        </FeaturedCarousel>
+      </section>
+
       <section aria-labelledby="universes-heading" className="mx-auto max-w-6xl px-5 py-24">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-xl">
@@ -91,6 +105,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <NameBand />
 
       <section
         aria-labelledby="holds-heading"
