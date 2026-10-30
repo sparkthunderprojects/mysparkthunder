@@ -24,7 +24,7 @@ export default function Logo({
     <Link href="/" aria-label="MySparkthunder home" className={cn('relative flex items-center', className)}>
       {withMy && (
         <span aria-hidden="true" className="logo-my">
-          My
+          <span className="logo-my-mark" />
           <i className="logo-spark logo-spark-a" />
           <i className="logo-spark logo-spark-b" />
         </span>

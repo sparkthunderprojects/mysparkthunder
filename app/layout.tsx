@@ -3,7 +3,6 @@ import '@fontsource/big-shoulders-display/latin-600';
 import '@fontsource/big-shoulders-display/latin-800';
 import '@fontsource/big-shoulders-display/latin-900';
 import '@fontsource-variable/hanken-grotesk';
-import '@fontsource/caveat/latin-700';
 import './globals.css';
 import { SITE_URL } from '@/lib/config';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/site';
