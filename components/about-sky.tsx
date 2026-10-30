@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import HeroBolt from '@/components/hero-bolt';
 
 /** Rising sparks, placed by a fixed formula so the server and browser draw the same ones. */
 const EMBERS = Array.from({ length: 34 }, (_, i) => {
@@ -62,7 +61,6 @@ export default function AboutSky() {
       <div aria-hidden="true" className="sky-storm absolute inset-0" />
       <div aria-hidden="true" className="sky-rays absolute left-1/2 top-1/2" />
 
-      {live && <HeroBolt heightClass="h-[56%]" />}
       <div aria-hidden="true" className="sky-flash absolute inset-0" />
 
       <div aria-hidden="true" className="sky-streak absolute left-1/2 top-1/2" />
