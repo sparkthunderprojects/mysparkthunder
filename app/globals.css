@@ -710,3 +710,61 @@ body::after {
     opacity: 0.55;
   }
 }
+
+/* ---------- "My" before the header logo ---------- */
+.logo-my {
+  position: absolute;
+  right: 100%;
+  bottom: -0.1em;
+  margin-right: 0.35rem;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 14px hsl(var(--arc) / 0.55);
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .logo-my {
+    font-size: 2.9rem;
+    margin-right: 0.5rem;
+  }
+}
+.logo-spark {
+  position: absolute;
+  border-radius: 9999px;
+  background: hsl(var(--arc));
+  box-shadow: 0 0 10px 2px hsl(var(--arc) / 0.8);
+  animation: logo-twinkle 3.2s ease-in-out infinite;
+}
+.logo-spark-a {
+  width: 5px;
+  height: 5px;
+  top: -0.1em;
+  left: 62%;
+}
+.logo-spark-b {
+  width: 3px;
+  height: 3px;
+  top: -0.4em;
+  left: 98%;
+  animation-delay: 1.4s;
+}
+@keyframes logo-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-spark {
+    animation: none;
+  }
+}

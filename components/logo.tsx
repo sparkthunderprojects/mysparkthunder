@@ -10,9 +10,25 @@ export function BoltMark({ className }: { className?: string }) {
   );
 }
 
-export default function Logo({ className, imgClassName }: { className?: string; imgClassName?: string }) {
+export default function Logo({
+  className,
+  imgClassName,
+  withMy = false,
+}: {
+  className?: string;
+  imgClassName?: string;
+  /** Adds the hand-lettered "My" before the logo, as in MyDisney. Used in the header only. */
+  withMy?: boolean;
+}) {
   return (
-    <Link href="/" aria-label="MySparkthunder home" className={cn('flex items-center', className)}>
+    <Link href="/" aria-label="MySparkthunder home" className={cn('relative flex items-center', className)}>
+      {withMy && (
+        <span aria-hidden="true" className="logo-my">
+          My
+          <i className="logo-spark logo-spark-a" />
+          <i className="logo-spark logo-spark-b" />
+        </span>
+      )}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/sparkthunder-logo.png"

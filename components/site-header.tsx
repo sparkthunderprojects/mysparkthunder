@@ -43,7 +43,7 @@ export default function SiteHeader() {
               </nav>
             </details>
           </div>
-          <Logo imgClassName="h-7 sm:h-8 md:h-11" />
+          <Logo withMy imgClassName="h-7 sm:h-8 md:h-11" />
           <div className="flex items-center justify-end">
             <HeaderAuth />
           </div>
