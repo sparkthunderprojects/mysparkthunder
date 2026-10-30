@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import JsonLd from '@/components/json-ld';
 import HeroBanners from '@/components/hero-banners';
 import AccountIntro from '@/components/account-intro';
-import AboutSky from '@/components/about-sky';
 import LogoStrip from '@/components/logo-strip';
 import NameBand from '@/components/name-band';
 import UniversePoster from '@/components/universe-poster';
@@ -80,8 +79,6 @@ export default function HomePage() {
       </section>
 
       <NameBand />
-
-      <AboutSky />
 
       <section
         aria-labelledby="holds-heading"

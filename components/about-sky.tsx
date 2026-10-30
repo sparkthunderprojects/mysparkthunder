@@ -37,7 +37,7 @@ function Clouds({ id, seed, freq, className }: { id: string; seed: number; freq:
  * starry night sky when the section scrolls into view. The heading and text
  * are plain HTML, so the section reads well without the animation.
  */
-export default function AboutSky() {
+export default function AboutSky({ as: Heading = 'h2', showLink = true }: { as?: 'h1' | 'h2'; showLink?: boolean }) {
   const ref = useRef<HTMLElement>(null);
   const [live, setLive] = useState(false);
 
@@ -89,19 +89,21 @@ export default function AboutSky() {
         <div className="sky-logo-wrap w-[min(86vw,820px)]">
           <span className="sky-logo block" role="img" aria-label="Sparkthunder" />
         </div>
-        <h2 id="about-heading" className="sky-copy mt-14 text-4xl font-black uppercase leading-none sm:text-6xl">
+        <Heading id="about-heading" className="sky-copy mt-14 text-4xl font-black uppercase leading-none sm:text-6xl">
           About Sparkthunder
-        </h2>
+        </Heading>
         <p className="sky-copy mt-7 max-w-2xl text-lg leading-relaxed text-bone/90 sm:text-xl sm:leading-relaxed">
           Sparkthunder makes original worlds, each with its own heroes, villains and stories. Every universe has
           its own home online, and MySparkthunder is the one account that carries you between them.
         </p>
-        <Link
-          href="/about"
-          className="sky-copy mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-volt transition-colors hover:text-bone"
-        >
-          Read our story
-        </Link>
+        {showLink && (
+          <Link
+            href="/about"
+            className="sky-copy mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-volt transition-colors hover:text-bone"
+          >
+            Read our story
+          </Link>
+        )}
       </div>
 
       <Clouds id="cloud-front" seed={9} freq="0.006 0.014" className="sky-cloud sky-cloud-front pointer-events-none absolute -inset-x-[10%] bottom-0 z-[1] h-[55%] w-[120%]" />
