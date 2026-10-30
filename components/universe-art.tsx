@@ -7,8 +7,8 @@ function Stars({ count = 26, seed = 3 }: { count?: number; seed?: number }) {
   const dots = Array.from({ length: count }, (_, i) => {
     const a = Math.sin((i + 1) * 12.9898 * seed) * 43758.5453;
     const b = Math.sin((i + 1) * 78.233 * seed) * 12345.6789;
-    const x = (a - Math.floor(a)) * 300;
-    const y = (b - Math.floor(b)) * 260;
+    const x = Math.round((a - Math.floor(a)) * 300 * 100) / 100;
+    const y = Math.round((b - Math.floor(b)) * 260 * 100) / 100;
     const r = 0.5 + ((i * 7) % 5) * 0.28;
     return <circle key={i} cx={x} cy={y} r={r} fill="hsl(205 100% 96%)" opacity={0.35 + ((i * 3) % 6) / 12} />;
   });

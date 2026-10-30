@@ -7,8 +7,8 @@ const EMBERS = Array.from({ length: 34 }, (_, i) => {
   const a = Math.sin((i + 1) * 12.9898) * 43758.5453;
   const b = Math.sin((i + 1) * 78.233) * 12345.6789;
   return {
-    left: 12 + (a - Math.floor(a)) * 76,
-    delay: (b - Math.floor(b)) * 9,
+    left: Math.round((12 + (a - Math.floor(a)) * 76) * 100) / 100,
+    delay: Math.round((b - Math.floor(b)) * 9 * 100) / 100,
     duration: 7 + (i % 6) * 1.4,
     size: 1.5 + (i % 4) * 0.9,
     drift: ((i % 7) - 3) * 14,

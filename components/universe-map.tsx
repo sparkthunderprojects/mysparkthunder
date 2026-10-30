@@ -10,7 +10,7 @@ export default function UniverseMap() {
   const n = UNIVERSES.length;
   const nodes = UNIVERSES.map((u, i) => {
     const angle = -Math.PI / 2 + (i * 2 * Math.PI) / n + Math.PI / n;
-    return { u, x: cx + Math.cos(angle) * 360, y: cy + Math.sin(angle) * 175 };
+    return { u, x: Math.round(cx + Math.cos(angle) * 360), y: Math.round(cy + Math.sin(angle) * 175) };
   });
   return (
     <section aria-labelledby="map-heading" className="mt-20">
