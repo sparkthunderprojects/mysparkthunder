@@ -58,8 +58,9 @@ export default function AboutSky() {
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/about/night-sky.jpg" alt="" aria-hidden="true" className="sky-photo absolute inset-0 h-full w-full object-cover" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/about/storm-strike.jpg" alt="" aria-hidden="true" className="sky-strike-img absolute inset-0 h-full w-full object-cover" />
       <div aria-hidden="true" className="sky-storm absolute inset-0" />
-      <div aria-hidden="true" className="sky-rays absolute left-1/2 top-1/2" />
 
       <div aria-hidden="true" className="sky-flash absolute inset-0" />
 

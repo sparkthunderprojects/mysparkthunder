@@ -413,7 +413,59 @@ body::after {
   transform: scale(1.04);
 }
 .sky-live .sky-photo {
-  animation: sky-push 30s cubic-bezier(0.25, 0.1, 0.25, 1) forwards, sky-lit 3s ease-out var(--strike) both;
+  animation: sky-push 30s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+.sky-strike-img {
+  opacity: 0;
+  transform: scale(1.04);
+}
+.sky-live .sky-strike-img {
+  animation: sky-strike 2.8s linear var(--strike) 1 both, sky-strike-idle 13s ease-in-out calc(var(--strike) + 6s) infinite, sky-push 30s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+@keyframes sky-strike {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0.45;
+  }
+  27% {
+    opacity: 0.95;
+  }
+  45% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sky-strike-idle {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  92% {
+    opacity: 0.12;
+  }
+  94% {
+    opacity: 0.55;
+  }
+  98% {
+    opacity: 0;
+  }
 }
 .sky-storm {
   background: radial-gradient(60% 50% at 50% 50%, hsl(215 80% 40% / 0.25), transparent 70%);
