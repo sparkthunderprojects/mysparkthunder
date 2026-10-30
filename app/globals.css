@@ -715,10 +715,10 @@ body::after {
 .logo-my {
   position: absolute;
   right: 100%;
-  bottom: -0.6rem;
-  margin-right: 0.3rem;
+  bottom: -0.5rem;
+  margin-right: 0.15rem;
   width: 2.7rem;
-  height: 2.3rem;
+  height: 2.2rem;
   filter: drop-shadow(0 0 10px hsl(var(--arc) / 0.55));
   transform: rotate(-6deg);
   pointer-events: none;
@@ -733,8 +733,8 @@ body::after {
 }
 @media (min-width: 768px) {
   .logo-my {
-    width: 4.9rem;
-    height: 4.1rem;
+    width: 4.4rem;
+    height: 3.55rem;
     margin-right: 0.5rem;
   }
 }
