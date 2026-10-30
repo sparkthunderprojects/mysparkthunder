@@ -27,7 +27,7 @@ export const UNIVERSES: Universe[] = [
   {
     slug: 'knightverge',
     name: 'Knightverge',
-    tagline: 'A vampire and slayer mythos, five thousand years deep.',
+    tagline: 'A shared comic universe of heroes, villains and legends, thousands of years in the making.',
     url: 'https://knightverge.com',
     status: 'live',
     accent: '#F0B429',
