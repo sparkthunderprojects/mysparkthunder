@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/json-ld';
-import FeaturedCarousel from '@/components/featured-carousel';
-import FeaturedSlide from '@/components/featured-slide';
-import StudioScene from '@/components/studio-scene';
+import HeroBanners from '@/components/hero-banners';
+import AccountIntro from '@/components/account-intro';
+import AboutSky from '@/components/about-sky';
 import LogoStrip from '@/components/logo-strip';
 import NameBand from '@/components/name-band';
 import UniversePoster from '@/components/universe-poster';
@@ -52,20 +52,11 @@ export default function HomePage() {
     <>
       <JsonLd data={[organizationLd, websiteLd]} />
 
-      <StudioScene />
+      <HeroBanners />
+
+      <AccountIntro />
 
       <LogoStrip />
-
-      <section aria-labelledby="featured-heading" className="w-full px-5 sm:px-8 lg:px-14 pt-20">
-        <h2 id="featured-heading" className="mb-8 text-5xl font-black uppercase leading-none sm:text-7xl">
-          Featured
-        </h2>
-        <FeaturedCarousel count={UNIVERSES.length}>
-          {UNIVERSES.map((universe, i) => (
-            <FeaturedSlide key={universe.slug} universe={universe} index={i} total={UNIVERSES.length} />
-          ))}
-        </FeaturedCarousel>
-      </section>
 
       <section aria-labelledby="universes-heading" className="w-full px-5 sm:px-8 lg:px-14 py-24">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
@@ -89,6 +80,8 @@ export default function HomePage() {
       </section>
 
       <NameBand />
+
+      <AboutSky />
 
       <section
         aria-labelledby="holds-heading"

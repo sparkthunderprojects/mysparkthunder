@@ -403,6 +403,148 @@ body::after {
   }
 }
 
+
+/* ---------- About sky ---------- */
+.sky-bg {
+  background:
+    radial-gradient(70% 55% at 50% 42%, hsl(222 60% 30% / 0.55), transparent 70%),
+    linear-gradient(180deg, hsl(228 62% 6%) 0%, hsl(224 55% 13%) 55%, hsl(222 45% 22%) 100%);
+}
+.sky-cloud {
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 100%);
+  animation: sky-drift 70s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.sky-cloud-front {
+  opacity: 0.5;
+  animation-duration: 55s;
+  animation-direction: alternate-reverse;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 70%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 70%);
+}
+.sky-live .sky-cloud {
+  animation-play-state: running;
+}
+.sky-live .sky-cloud-front {
+  animation: sky-drift 55s ease-in-out infinite alternate-reverse, sky-part 3.6s ease-out 0.4s forwards;
+}
+.sky-twinkle {
+  animation: sky-twinkle 4s ease-in-out infinite;
+}
+.sky-flash {
+  background: radial-gradient(40% 30% at 50% 40%, hsl(205 100% 92% / 0.9), hsl(215 90% 60% / 0.35) 45%, transparent 75%);
+  opacity: 0;
+}
+.sky-live .sky-flash {
+  animation: sky-flash 2.4s ease-out 1.1s 1 both;
+}
+.sky-logo-wrap {
+  opacity: 0;
+  filter: blur(26px) brightness(2.4);
+  transform: scale(1.14);
+}
+.sky-live .sky-logo-wrap {
+  animation: sky-materialise 3.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s forwards;
+}
+.sky-logo {
+  aspect-ratio: 6 / 1;
+  background: linear-gradient(100deg, #8d98b8 0%, #f4f7ff 26%, #aeb8d4 44%, #ffffff 58%, #8d98b8 100%);
+  background-size: 260% 100%;
+  -webkit-mask: url(/sparkthunder-logo.png) center / contain no-repeat;
+  mask: url(/sparkthunder-logo.png) center / contain no-repeat;
+}
+.sky-live .sky-logo {
+  animation: logo-shine 9s ease-in-out 4.2s infinite;
+}
+.sky-copy {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.sky-live .sky-copy {
+  animation: sky-copy 1.2s ease-out 2.8s forwards;
+}
+@keyframes sky-drift {
+  from {
+    transform: translateX(-5%);
+  }
+  to {
+    transform: translateX(5%);
+  }
+}
+@keyframes sky-part {
+  to {
+    opacity: 0.18;
+  }
+}
+@keyframes sky-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes sky-flash {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0.2;
+  }
+  34% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sky-materialise {
+  0% {
+    opacity: 0;
+    filter: blur(26px) brightness(2.4);
+    transform: scale(1.14);
+  }
+  55% {
+    opacity: 0.85;
+    filter: blur(6px) brightness(1.6);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(1) drop-shadow(0 0 26px hsl(205 100% 80% / 0.35));
+    transform: none;
+  }
+}
+@keyframes sky-copy {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky-cloud,
+  .sky-twinkle {
+    animation: none !important;
+  }
+  .sky-logo-wrap,
+  .sky-copy {
+    animation: none !important;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .sky-flash {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

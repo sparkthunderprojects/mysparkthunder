@@ -12,6 +12,8 @@ export interface Universe {
   accent: string;
   /** Optional wordmark image shown on the poster in place of the plain title. */
   logo?: { src: string; width: number; height: number };
+  /** Optional wide banner image (about 2400x1000). When set, the home page hero uses it instead of the drawn art. */
+  banner?: string;
   /** Address of this universe's page in the Sparkthunder Shop. Leave null until the shop opens. */
   shopUrl?: string | null;
 }
@@ -30,6 +32,7 @@ export const UNIVERSES: Universe[] = [
     status: 'live',
     accent: '#F0B429',
     logo: { src: '/universes/knightverge-logo.png', width: 900, height: 201 },
+    banner: '/banners/knightverge.jpg',
   },
   {
     slug: 'knightverge-legacy',
@@ -48,6 +51,7 @@ export const UNIVERSES: Universe[] = [
     status: 'in-development',
     accent: '#8B6CF0',
     logo: { src: '/universes/occult-inc-logo.png', width: 900, height: 329 },
+    banner: '/banners/occult-inc.jpg',
   },
   {
     slug: 'grim-gala',
