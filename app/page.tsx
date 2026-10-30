@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import JsonLd from '@/components/json-ld';
 import FeaturedCarousel from '@/components/featured-carousel';
 import FeaturedSlide from '@/components/featured-slide';
-import HeroBolt from '@/components/hero-bolt';
+import StudioScene from '@/components/studio-scene';
 import NameBand from '@/components/name-band';
 import UniversePoster from '@/components/universe-poster';
 import { ButtonLink } from '@/components/ui';
@@ -51,28 +51,7 @@ export default function HomePage() {
     <>
       <JsonLd data={[organizationLd, websiteLd]} />
 
-      <section className="hero-stage -mt-px flex min-h-[calc(100svh-8.5rem)] flex-col justify-end">
-        <HeroBolt />
-        <div className="hero-flash" aria-hidden="true" />
-        <div className="relative z-[4] w-full px-5 sm:px-8 lg:px-14 pb-14 pt-40 text-center sm:pb-20">
-          <h1 className="title-lit text-[clamp(3.6rem,13vw,10.5rem)] font-black uppercase leading-[0.86]">
-            <span className="block">One account.</span>
-            <span className="block">Every universe.</span>
-          </h1>
-          <div className="hero-rise">
-            <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-bone/80">
-              MySparkthunder is the account behind every Sparkthunder universe. Sign in once to save
-              your favourites, keep your reading history and manage your details in one place.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <ButtonLink href="/signup">Create your account</ButtonLink>
-              <ButtonLink href="/login" variant="secondary">
-                Sign in
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StudioScene />
 
       <section aria-labelledby="featured-heading" className="w-full px-5 sm:px-8 lg:px-14 pt-20">
         <h2 id="featured-heading" className="mb-8 text-5xl font-black uppercase leading-none sm:text-7xl">

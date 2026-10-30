@@ -4,16 +4,16 @@
  * it lands. All of it is plain SVG and CSS, so it plays without any script
  * and is only decoration (hidden from screen readers).
  */
-const MAIN = 'M500 0 L476 72 L514 120 L468 198 L506 240 L460 322 L498 378 L472 440';
-const BRANCHES = [
+export const MAIN = 'M500 0 L476 72 L514 120 L468 198 L506 240 L460 322 L498 378 L472 440';
+export const BRANCHES = [
   'M514 120 L584 172 L566 232 L636 292',
   'M468 198 L398 252 L416 304 L348 366',
   'M460 322 L528 362 L508 412',
 ];
 
-export default function HeroBolt() {
+export default function HeroBolt({ heightClass = 'h-[62%]' }: { heightClass?: string }) {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[62%]">
+    <div aria-hidden="true" className={`pointer-events-none absolute inset-x-0 top-0 z-[1] ${heightClass}`}>
       <svg viewBox="250 0 500 520" preserveAspectRatio="xMidYMin meet" className="h-full w-full overflow-visible">
         <defs>
           <filter id="bolt-glow" x="-40%" y="-10%" width="180%" height="120%">

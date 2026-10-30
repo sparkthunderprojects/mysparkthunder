@@ -85,11 +85,11 @@ body::after {
   .bolt-line {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: bolt-draw 0.42s cubic-bezier(0.3, 0.1, 0.2, 1) 0.25s forwards,
-      bolt-fade 2.6s ease-out 0.7s forwards;
+    animation: bolt-draw 0.42s cubic-bezier(0.3, 0.1, 0.2, 1) calc(var(--intro-delay, 0s) + 0.25s) forwards,
+      bolt-fade 2.6s ease-out calc(var(--intro-delay, 0s) + 0.7s) forwards;
   }
   .bolt-line-late {
-    animation-delay: 0.45s, 0.9s;
+    animation-delay: calc(var(--intro-delay, 0s) + 0.45s), calc(var(--intro-delay, 0s) + 0.9s);
   }
   .hero-flash {
     position: absolute;
@@ -98,7 +98,7 @@ body::after {
     pointer-events: none;
     opacity: 0;
     background: radial-gradient(60% 70% at 50% 40%, hsl(var(--arc) / 0.95), hsl(var(--volt) / 0.4) 55%, transparent 80%);
-    animation: hero-flash 0.9s ease-out 0.55s forwards;
+    animation: hero-flash 0.9s ease-out calc(var(--intro-delay, 0s) + 0.55s) forwards;
   }
   .hero-flare {
     position: absolute;
@@ -111,7 +111,7 @@ body::after {
     box-shadow: 0 0 22px 6px hsl(var(--volt) / 0.45);
     transform-origin: 50% 50%;
     opacity: 0;
-    animation: flare-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.6s forwards;
+    animation: flare-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--intro-delay, 0s) + 0.6s) forwards;
   }
   .title-lit {
     color: hsl(var(--arc));
@@ -120,10 +120,54 @@ body::after {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 28px hsl(var(--volt) / 0.35));
-    animation: title-reveal 1.6s ease-out 0.55s both;
+    animation: title-reveal 1.6s ease-out calc(var(--intro-delay, 0s) + 0.55s) both;
   }
   .hero-rise {
-    animation: hero-rise 1s ease-out 1.1s both;
+    animation: hero-rise 1s ease-out calc(var(--intro-delay, 0s) + 1.1s) both;
+  }
+
+
+
+  /* ---------- Opening scene ---------- */
+  .scene {
+    background:
+      radial-gradient(70% 60% at 50% 38%, hsl(var(--volt) / 0.1), transparent 70%),
+      linear-gradient(180deg, hsl(236 46% 10%), hsl(240 50% 6%));
+  }
+  .scene::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(to top, hsl(var(--ink)) 0, transparent 14%),
+      radial-gradient(140% 110% at 50% 40%, transparent 62%, hsl(240 50% 4% / 0.7) 100%);
+  }
+  .scene-logo-wrap {
+    width: min(80vw, 760px);
+    margin: 0 auto;
+    animation: logo-in 1.7s ease-out 0.6s both;
+  }
+  .scene-logo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 6 / 1;
+    background: linear-gradient(100deg, #8d98b8 0%, #f4f7ff 26%, #aeb8d4 44%, #ffffff 58%, #8d98b8 100%);
+    background-size: 260% 100%;
+    -webkit-mask: url(/sparkthunder-logo.png) center / contain no-repeat;
+    mask: url(/sparkthunder-logo.png) center / contain no-repeat;
+    animation: logo-shine 8s ease-in-out 2.4s infinite;
+  }
+  .scene-arc path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: arc-draw 1.6s cubic-bezier(0.3, 0.1, 0.2, 1) 1.1s forwards, arc-glow 5s ease-in-out 2.8s infinite;
+  }
+  .scene-paused *,
+  .scene-paused *::before,
+  .scene-paused *::after {
+    animation-play-state: paused !important;
   }
 
   /* ---------- Angled-corner frames ----------
@@ -216,6 +260,42 @@ body::after {
   }
 }
 
+@keyframes logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+    filter: brightness(4) blur(8px) drop-shadow(0 0 60px hsl(var(--arc)));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: brightness(1) blur(0) drop-shadow(0 0 22px hsl(var(--volt) / 0.4));
+  }
+}
+@keyframes logo-shine {
+  0%,
+  40% {
+    background-position: 100% 0;
+  }
+  70%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+@keyframes arc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes arc-glow {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
 @keyframes bolt-draw {
   to {
     stroke-dashoffset: 0;
@@ -283,6 +363,9 @@ body::after {
   .hero-flare,
   .title-lit,
   .hero-rise,
+  .scene-logo-wrap,
+  .scene-logo,
+  .scene-arc path,
   .poster-wrap,
   .poster-in::after {
     animation: none !important;
