@@ -77,7 +77,7 @@ export default function AccountSession({ children }: { children: React.ReactNode
 
   if (!session) {
     return (
-      <div className="mx-auto max-w-6xl px-5 py-16">
+      <div className="w-full px-5 sm:px-8 lg:px-14 py-16">
         <p className="text-dim" role="status">
           Loading your account
         </p>
@@ -87,7 +87,7 @@ export default function AccountSession({ children }: { children: React.ReactNode
 
   return (
     <SessionContext.Provider value={session}>
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
+      <div className="grid gap-10 w-full px-5 sm:px-8 lg:px-14 py-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
         <AccountNav email={session.user.email ?? ''} />
         <div>{children}</div>
       </div>

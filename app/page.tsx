@@ -54,7 +54,7 @@ export default function HomePage() {
       <section className="hero-stage -mt-px flex min-h-[calc(100svh-8.5rem)] flex-col justify-end">
         <HeroBolt />
         <div className="hero-flash" aria-hidden="true" />
-        <div className="relative z-[4] mx-auto w-full max-w-6xl px-5 pb-14 pt-40 text-center sm:pb-20">
+        <div className="relative z-[4] w-full px-5 sm:px-8 lg:px-14 pb-14 pt-40 text-center sm:pb-20">
           <h1 className="title-lit text-[clamp(3.6rem,13vw,10.5rem)] font-black uppercase leading-[0.86]">
             <span className="block">One account.</span>
             <span className="block">Every universe.</span>
@@ -74,7 +74,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="featured-heading" className="mx-auto max-w-6xl px-5 pt-20">
+      <section aria-labelledby="featured-heading" className="w-full px-5 sm:px-8 lg:px-14 pt-20">
         <h2 id="featured-heading" className="mb-8 text-5xl font-black uppercase leading-none sm:text-7xl">
           Featured
         </h2>
@@ -85,7 +85,7 @@ export default function HomePage() {
         </FeaturedCarousel>
       </section>
 
-      <section aria-labelledby="universes-heading" className="mx-auto max-w-6xl px-5 py-24">
+      <section aria-labelledby="universes-heading" className="w-full px-5 sm:px-8 lg:px-14 py-24">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2 id="universes-heading" className="text-5xl font-black uppercase leading-none sm:text-7xl">
@@ -112,7 +112,7 @@ export default function HomePage() {
         aria-labelledby="holds-heading"
         className="border-y border-line bg-gradient-to-b from-panel to-ink"
       >
-        <div className="mx-auto max-w-6xl px-5 py-24">
+        <div className="w-full px-5 sm:px-8 lg:px-14 py-24">
           <h2 id="holds-heading" className="max-w-3xl text-5xl font-black uppercase leading-[0.92] sm:text-7xl">
             What your account holds
           </h2>
@@ -137,7 +137,7 @@ export default function HomePage() {
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-full bg-[radial-gradient(60%_80%_at_50%_0%,hsl(var(--volt)/0.14),transparent_70%)]"
         />
-        <div className="mx-auto grid max-w-6xl gap-14 px-5 py-24 lg:grid-cols-2">
+        <div className="grid gap-14 w-full px-5 sm:px-8 lg:px-14 py-24 lg:grid-cols-2">
           <div>
             <h2 className="text-5xl font-black uppercase leading-[0.92] sm:text-7xl">
               Separate worlds stay separate

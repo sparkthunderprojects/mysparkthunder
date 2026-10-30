@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata({
 export default function UniversesPage() {
   const trail = [{ name: 'Universes', path: '/universes' }];
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14">
+    <div className="w-full px-5 sm:px-8 lg:px-14 py-14">
       <JsonLd data={[breadcrumbLd(trail), universeListLd(UNIVERSES)]} />
       <Breadcrumbs trail={trail} />
       <PageHeading

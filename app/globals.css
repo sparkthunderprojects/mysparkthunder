@@ -7,13 +7,13 @@
   Values are HSL triplets (hue saturation lightness).
 */
 :root {
-  --ink: 228 40% 3.5%;     /* the void behind everything */
-  --panel: 228 32% 6.5%;   /* raised sections */
-  --raised: 228 26% 10%;   /* inputs, hover fills */
-  --line: 228 20% 17%;     /* borders */
-  --bone: 38 22% 91%;      /* main text, warm like projector light */
-  --dim: 226 12% 67%;      /* secondary text */
-  --volt: 41 96% 58%;      /* signature gold */
+  --ink: 224 38% 14%;     /* page background: deep midnight blue */
+  --panel: 224 36% 18%;   /* raised sections */
+  --raised: 224 32% 23%;  /* inputs, hover fills */
+  --line: 224 28% 32%;    /* borders */
+  --bone: 40 35% 96%;     /* main text, warm like projector light */
+  --dim: 222 22% 78%;      /* secondary text */
+  --volt: 42 100% 60%;     /* signature gold */
   --arc: 205 100% 96%;     /* cold white core of the lightning */
   --danger: 0 72% 62%;
   --ok: 152 55% 52%;
@@ -67,9 +67,9 @@ body::after {
     isolation: isolate;
     overflow: hidden;
     background:
-      radial-gradient(70% 55% at 50% 0%, hsl(var(--volt) / 0.16), transparent 70%),
-      radial-gradient(120% 80% at 50% 120%, hsl(228 60% 14% / 0.9), transparent 60%),
-      hsl(var(--ink));
+      radial-gradient(75% 55% at 50% 0%, hsl(var(--volt) / 0.3), transparent 70%),
+      radial-gradient(90% 55% at 50% 108%, hsl(30 95% 58% / 0.38), transparent 70%),
+      linear-gradient(180deg, hsl(226 50% 24%), hsl(238 44% 16%));
   }
   .hero-stage::after {
     /* vignette */
@@ -80,7 +80,7 @@ body::after {
     pointer-events: none;
     background:
       linear-gradient(to top, hsl(var(--ink)) 0, transparent 16%),
-      radial-gradient(130% 100% at 50% 40%, transparent 55%, hsl(var(--ink)) 100%);
+      radial-gradient(140% 110% at 50% 40%, transparent 65%, hsl(var(--ink) / 0.85) 100%);
   }
   .bolt-line {
     stroke-dasharray: 1;

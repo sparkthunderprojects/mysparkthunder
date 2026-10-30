@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 export default function HelpPage() {
   const trail = [{ name: 'Help', path: '/help' }];
   return (
-    <article className="mx-auto max-w-3xl px-5 py-14">
+    <article className="w-full px-5 py-14 sm:px-8 lg:px-14 [&>*]:max-w-3xl">
       <JsonLd data={[breadcrumbLd(trail), faqLd(FAQ)]} />
       <Breadcrumbs trail={trail} />
       <PageHeading

@@ -13,7 +13,7 @@ const NAV = [
 export default function SiteHeader() {
   return (
     <header className="relative z-40 border-b border-line/60 bg-ink/70 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-5">
+      <div className="w-full px-5 sm:px-8 lg:px-14">
         <div className="grid h-20 grid-cols-[1fr_auto_1fr] items-center gap-4 md:h-24">
           <div className="flex items-center justify-start">
             {/* Menu for small screens: native details element, no script needed. */}

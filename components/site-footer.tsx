@@ -14,7 +14,7 @@ export default function SiteFooter() {
   const live = UNIVERSES.filter((u) => u.status === 'live' && u.url);
   return (
     <footer className="border-t border-line bg-gradient-to-b from-ink to-panel">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="grid gap-10 w-full px-5 sm:px-8 lg:px-14 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-3">
           <Logo />
           <p className="max-w-xs text-sm leading-relaxed text-dim">
@@ -52,7 +52,7 @@ export default function SiteFooter() {
         </nav>
       </div>
       <div className="border-t border-line">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-dim">
+        <p className="w-full px-5 sm:px-8 lg:px-14 py-5 text-xs text-dim">
           &copy; {new Date().getFullYear()} Sparkthunder. All rights reserved.
         </p>
       </div>
