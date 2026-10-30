@@ -12,5 +12,6 @@ export const CHARACTER_LOGOS: CharacterLogo[] = [
   { name: 'Shatter Queen', src: '/characters/shatter-queen.png' },
   { name: 'Dead Division', src: '/characters/dead-division.png' },
   { name: 'Monster Pact', src: '/characters/monster-pact.png' },
+  { name: 'Jenna Hex', src: '/characters/jenna-hex.png' },
   { name: 'Relic Stormer', src: '/characters/relic-stormer.png' },
 ];
