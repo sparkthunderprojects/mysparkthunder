@@ -4,6 +4,7 @@ import JsonLd from '@/components/json-ld';
 import FeaturedCarousel from '@/components/featured-carousel';
 import FeaturedSlide from '@/components/featured-slide';
 import StudioScene from '@/components/studio-scene';
+import LogoStrip from '@/components/logo-strip';
 import NameBand from '@/components/name-band';
 import UniversePoster from '@/components/universe-poster';
 import { ButtonLink } from '@/components/ui';
@@ -52,6 +53,8 @@ export default function HomePage() {
       <JsonLd data={[organizationLd, websiteLd]} />
 
       <StudioScene />
+
+      <LogoStrip />
 
       <section aria-labelledby="featured-heading" className="w-full px-5 sm:px-8 lg:px-14 pt-20">
         <h2 id="featured-heading" className="mb-8 text-5xl font-black uppercase leading-none sm:text-7xl">
