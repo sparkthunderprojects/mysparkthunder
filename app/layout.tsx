@@ -8,6 +8,7 @@ import { SITE_URL } from '@/lib/config';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/site';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
+import CookieNotice from '@/components/cookie-notice';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <CookieNotice />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/breadcrumbs';
 import JsonLd from '@/components/json-ld';
+import UniverseMap from '@/components/universe-map';
 import UniversePoster from '@/components/universe-poster';
 import { PageHeading } from '@/components/ui';
 import { breadcrumbLd, pageMetadata, universeListLd } from '@/lib/seo';
@@ -11,6 +12,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Every Sparkthunder universe in one place. Knightverge is open now, and more worlds are in development. One MySparkthunder account works across all of them.',
   path: '/universes',
+  og: 'universes',
 });
 
 export default function UniversesPage() {
@@ -28,6 +30,7 @@ export default function UniversesPage() {
           <UniversePoster key={universe.slug} universe={universe} />
         ))}
       </div>
+      <UniverseMap />
     </div>
   );
 }

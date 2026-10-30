@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ContactForm from '@/components/contact-form';
 import DocPage from '@/components/doc-page';
 import { pageMetadata } from '@/lib/seo';
 import { CONTACT_EMAIL } from '@/lib/site';
@@ -24,6 +25,7 @@ export default function ContactPage() {
         </a>
         . Please write from the email address on your account so we can find it, and never send your password.
       </p>
+      <ContactForm />
       <p>
         Many questions are answered on the <Link href="/help">help page</Link>, including how to reset a
         password and how to delete your account.

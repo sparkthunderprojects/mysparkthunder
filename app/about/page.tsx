@@ -10,6 +10,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Sparkthunder makes original worlds, each with its own site. MySparkthunder is the single account that works across all of them.',
   path: '/about',
+  og: 'about',
 });
 
 export default function AboutPage() {
@@ -25,6 +26,11 @@ export default function AboutPage() {
             Sparkthunder is home to a growing set of original universes. Each one is a world of its own, with its
             own story, its own characters and its own site. Knightverge is open now, and others are in
             development.
+          </p>
+          <h2>Meet the creator</h2>
+          <p>
+            Sparkthunder is made by a comic book writer who builds each universe, from its first story to its website.
+            Every world here starts as a story told on the page, and every site is built to be explored.
           </p>
           <h2>One account for the network</h2>
           <p>

@@ -3,8 +3,8 @@ import { SITE_URL } from '@/lib/config';
 import { COMPANY_NAME, SITE_DESCRIPTION, SITE_NAME } from '@/lib/site';
 import type { FaqItem } from '@/lib/faq';
 import type { Universe } from '@/lib/universes';
+import { ogUrl } from '@/lib/og';
 
-const OG_IMAGE = { url: '/og.png', width: 1200, height: 630, alt: `${SITE_NAME}: one account, every universe` };
 
 interface PageMeta {
   title: string;
@@ -15,9 +15,12 @@ interface PageMeta {
   noindex?: boolean;
   /** Use the title exactly as given instead of "Title | MySparkthunder". */
   absoluteTitle?: boolean;
+  /** Key of the share image (see lib/og.ts). */
+  og?: string;
 }
 
-export function pageMetadata({ title, description, path, noindex, absoluteTitle }: PageMeta): Metadata {
+export function pageMetadata({ title, description, path, noindex, absoluteTitle, og = 'default' }: PageMeta): Metadata {
+  const OG_IMAGE = { url: ogUrl(og), width: 1200, height: 630, alt: `${title} | ${SITE_NAME}` };
   const url = `${SITE_URL}${path}`;
   const fullTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
   return {

@@ -5,12 +5,15 @@ import HeroBanners from '@/components/hero-banners';
 import AccountIntro from '@/components/account-intro';
 import LogoStrip from '@/components/logo-strip';
 import NameBand from '@/components/name-band';
+import NotifyForm from '@/components/notify-form';
 import UniversePoster from '@/components/universe-poster';
 import { ButtonLink } from '@/components/ui';
 import { FAQ } from '@/lib/faq';
+import { NEWS } from '@/lib/news';
 import { organizationLd, pageMetadata, websiteLd } from '@/lib/seo';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/site';
-import { UNIVERSES } from '@/lib/universes';
+import { UNIVERSES, universeName } from '@/lib/universes';
+import { formatDate } from '@/lib/utils';
 
 export const metadata: Metadata = pageMetadata({
   title: `${SITE_NAME}: ${SITE_TAGLINE}`,
@@ -104,6 +107,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section aria-labelledby="news-heading" className="w-full px-5 py-24 sm:px-8 lg:px-14">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <h2 id="news-heading" className="text-5xl font-black uppercase leading-none sm:text-7xl">
+            What is new
+          </h2>
+          <Link href="/news" className="font-semibold text-volt hover:text-arc">
+            All news
+          </Link>
+        </div>
+        <ul className="grid gap-5 md:grid-cols-3">
+          {NEWS.slice(0, 3).map((n) => (
+            <li key={n.slug} className="rounded border border-line bg-panel/60 p-6">
+              <p className="text-sm text-dim">
+                <time dateTime={n.date}>{formatDate(n.date)}</time>
+                {n.universe ? `, ${universeName(n.universe)}` : ''}
+              </p>
+              <h3 className="mt-2 text-2xl font-bold">{n.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-dim">{n.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="shop-heading" className="border-y border-line bg-gradient-to-b from-ink to-panel">
+        <div className="grid w-full gap-10 px-5 py-24 sm:px-8 lg:grid-cols-2 lg:px-14">
+          <div>
+            <h2 id="shop-heading" className="text-5xl font-black uppercase leading-[0.92] sm:text-7xl">
+              The Sparkthunder Shop
+            </h2>
+            <p className="mt-6 max-w-prose leading-relaxed text-dim">
+              Official products from every universe are on the way. Leave your email and you will be first to know when
+              the doors open. Your orders and wish list will then appear in your MySparkthunder account.
+            </p>
+          </div>
+          <div className="self-center">
+            <NotifyForm topic="shop" button="Notify me" done="You are on the list for the Shop." />
+          </div>
+        </div>
+      </section>
+
       <section className="relative isolate overflow-hidden">
         <div
           aria-hidden="true"
@@ -138,6 +181,16 @@ export default function HomePage() {
               </Link>
             </p>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="letter-heading" className="border-t border-line">
+        <div className="w-full px-5 py-20 sm:px-8 lg:px-14">
+          <h2 id="letter-heading" className="text-4xl font-black uppercase leading-none sm:text-5xl">
+            Stay in the loop
+          </h2>
+          <p className="mb-6 mt-3 max-w-prose text-dim">News from every universe, sent only when there is something to say.</p>
+          <NotifyForm />
         </div>
       </section>
     </>

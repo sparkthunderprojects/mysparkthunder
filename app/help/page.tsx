@@ -12,6 +12,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Answers about your MySparkthunder account: signing in, resetting your password, changing your email, your favourites and deleting your account.',
   path: '/help',
+  og: 'help',
 });
 
 export default function HelpPage() {

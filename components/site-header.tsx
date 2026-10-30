@@ -5,6 +5,7 @@ import HeaderAuth from '@/components/header-auth';
 
 const NAV = [
   { href: '/universes', label: 'Universes' },
+  { href: '/news', label: 'News' },
   { href: '/about', label: 'About' },
   { href: '/help', label: 'Help' },
 ];

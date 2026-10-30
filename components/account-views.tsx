@@ -5,9 +5,10 @@ import ProfileForm from '@/components/profile-form';
 import { ChangeEmailForm, ChangePasswordForm, DeleteRequestForm } from '@/components/security-forms';
 import { ButtonLink, EmptyState, PageHeading } from '@/components/ui';
 import { useAccount, useAccountData } from '@/components/account-session';
+import { computeBadges } from '@/lib/badges';
 import { entityTypeLabel, getFavouriteGroups, getMemberships, getProfile } from '@/lib/data';
 import { getOrders, getWishlist } from '@/lib/shop';
-import { findUniverse, universeName } from '@/lib/universes';
+import { UNIVERSES, findUniverse, universeName } from '@/lib/universes';
 import { formatDate } from '@/lib/utils';
 
 function Loading() {
@@ -45,9 +46,31 @@ export function OverviewView() {
     { href: '/account/orders', label: 'See your orders' },
   ];
 
+  const joined = new Set(memberships.map((m) => m.site));
+  const badges = computeBadges({
+    createdAt: profile?.created_at ?? user.created_at,
+    universesJoined: memberships.length,
+    favourites: favouriteTotal,
+    hasAvatar: Boolean(profile?.avatar_url),
+    hasName: Boolean(profile?.display_name),
+  });
+
   return (
     <div>
-      <PageHeading title={`Welcome back, ${name}`} intro="Everything about your Sparkthunder account, in one place." />
+      <div className="mb-8 flex items-center gap-5">
+        {profile?.avatar_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={profile.avatar_url} alt="" className="h-20 w-20 rounded-full border border-line object-cover" />
+        ) : (
+          <span aria-hidden="true" className="flex h-20 w-20 items-center justify-center rounded-full border border-line bg-raised font-display text-4xl font-extrabold text-volt">
+            {name.charAt(0).toUpperCase()}
+          </span>
+        )}
+        <div className="min-w-0">
+          <h1 className="text-4xl font-black uppercase leading-none sm:text-5xl">Welcome back, {name}</h1>
+          <p className="mt-2 text-dim">Everything about your Sparkthunder account, in one place.</p>
+        </div>
+      </div>
       <dl className="grid gap-px border border-line bg-line sm:grid-cols-3">
         {figures.map((f) => (
           <div key={f.label} className="bg-ink p-5">
@@ -56,7 +79,53 @@ export function OverviewView() {
           </div>
         ))}
       </dl>
-      <ul className="mt-10 divide-y divide-line border-y border-line">
+
+      <section aria-labelledby="dash-universes" className="mt-12">
+        <h2 id="dash-universes" className="text-3xl font-semibold">
+          Your universes
+        </h2>
+        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+          {UNIVERSES.map((u) => {
+            const isIn = joined.has(u.slug);
+            const live = u.status === 'live' && u.url;
+            return (
+              <li key={u.slug} className="rounded border border-line bg-panel/60 p-5" style={{ borderLeft: `4px solid ${u.accent}` }}>
+                <h3 className="text-2xl font-bold">{u.name}</h3>
+                <p className="mt-1 text-sm text-dim">
+                  {isIn ? 'You are a member.' : live ? 'Sign in there with this account to join.' : 'In development.'}
+                </p>
+                <div className="mt-4">
+                  {live ? (
+                    <ButtonLink href={u.url as string} variant={isIn ? 'primary' : 'secondary'} className="px-4 py-2.5">
+                      {isIn ? `Continue in ${u.name}` : `Visit ${u.name}`}
+                    </ButtonLink>
+                  ) : (
+                    <Link href={`/universes/${u.slug}`} className="text-sm font-semibold text-volt hover:underline">
+                      Get notified
+                    </Link>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section aria-labelledby="dash-badges" className="mt-12">
+        <h2 id="dash-badges" className="text-3xl font-semibold">
+          Badges
+        </h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {badges.map((b) => (
+            <li key={b.id} className={`rounded border p-4 ${b.earned ? 'border-volt/60 bg-volt/[0.06]' : 'border-line opacity-60'}`}>
+              <p className="font-bold">{b.name}</p>
+              <p className="mt-1 text-sm text-dim">{b.earned ? b.detail : `Locked. ${b.detail}`}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <ul className="mt-12 divide-y divide-line border-y border-line">
         {shortcuts.map((s) => (
           <li key={s.href}>
             <Link href={s.href} className="block py-4 text-lg font-semibold hover:text-volt">
