@@ -38,6 +38,7 @@ export const UNIVERSES: Universe[] = [
     url: null,
     status: 'in-development',
     accent: '#C9873A',
+    logo: { src: '/universes/knightverge-legacy-logo.png', width: 900, height: 324 },
   },
   {
     slug: 'occult-inc',
