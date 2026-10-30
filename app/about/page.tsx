@@ -17,7 +17,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbLd(trail)} />
-      <AboutSky as="h1" showLink={false} />
+      <AboutSky />
       <article className="w-full px-5 py-14 sm:px-8 lg:px-14 [&>*]:max-w-3xl">
         <Breadcrumbs trail={trail} />
         <div className="mt-8 max-w-prose space-y-4 leading-relaxed text-bone/90 [&_a]:text-volt [&_a:hover]:underline [&_h2]:mb-1 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-semibold [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">

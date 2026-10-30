@@ -1,14 +1,29 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import HeroBolt from '@/components/hero-bolt';
+
+/** Rising sparks, placed by a fixed formula so the server and browser draw the same ones. */
+const EMBERS = Array.from({ length: 34 }, (_, i) => {
+  const a = Math.sin((i + 1) * 12.9898) * 43758.5453;
+  const b = Math.sin((i + 1) * 78.233) * 12345.6789;
+  return {
+    left: 12 + (a - Math.floor(a)) * 76,
+    delay: (b - Math.floor(b)) * 9,
+    duration: 7 + (i % 6) * 1.4,
+    size: 1.5 + (i % 4) * 0.9,
+    drift: ((i % 7) - 3) * 14,
+    gold: i % 3 !== 0,
+  };
+});
 
 /**
- * About section: the Sparkthunder logo materialises out of the clouds on a
- * starry night sky when the section scrolls into view. The heading and text
- * are plain HTML, so the section reads well without the animation.
+ * Opening scene for the About page. A storm sky, a lightning strike, and the
+ * Sparkthunder logo materialising in the flash, with light rays, a lens
+ * streak and drifting sparks. The only text is the page heading, which is
+ * kept for search engines and screen readers.
  */
-export default function AboutSky({ as: Heading = 'h2', showLink = true }: { as?: 'h1' | 'h2'; showLink?: boolean }) {
+export default function AboutSky() {
   const ref = useRef<HTMLElement>(null);
   const [live, setLive] = useState(false);
 
@@ -26,7 +41,7 @@ export default function AboutSky({ as: Heading = 'h2', showLink = true }: { as?:
           io.disconnect();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.3 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -36,39 +51,52 @@ export default function AboutSky({ as: Heading = 'h2', showLink = true }: { as?:
     <section
       ref={ref}
       aria-labelledby="about-heading"
-      className={`sky relative isolate overflow-hidden ${live ? 'sky-live' : ''}`}
+      className={`sky relative isolate flex min-h-[34rem] h-[calc(100svh-8.5rem)] max-h-[56rem] items-center justify-center overflow-hidden bg-[#03060f] ${live ? 'sky-live' : ''}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/about/night-sky.jpg"
-        alt=""
-        aria-hidden="true"
-        className="sky-photo absolute inset-0 -z-10 h-full w-full object-cover"
-      />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(55%_60%_at_50%_60%,hsl(224_60%_6%/0.72),transparent_80%)]" />
-      <div aria-hidden="true" className="sky-flash absolute inset-0 -z-10" />
+      <h1 id="about-heading" className="sr-only">
+        About Sparkthunder
+      </h1>
 
-      <div className="mx-auto flex min-h-[44rem] w-full max-w-5xl flex-col items-center justify-center px-5 py-24 text-center sm:py-32">
-        <div className="sky-logo-wrap w-[min(86vw,820px)]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/about/night-sky.jpg" alt="" aria-hidden="true" className="sky-photo absolute inset-0 h-full w-full object-cover" />
+      <div aria-hidden="true" className="sky-storm absolute inset-0" />
+      <div aria-hidden="true" className="sky-rays absolute left-1/2 top-1/2" />
+
+      {live && <HeroBolt heightClass="h-[56%]" />}
+      <div aria-hidden="true" className="sky-flash absolute inset-0" />
+
+      <div aria-hidden="true" className="sky-streak absolute left-1/2 top-1/2" />
+
+      <div className="relative z-[3] w-[min(88vw,980px)]">
+        <span aria-hidden="true" className="sky-logo-glow absolute inset-0 block" />
+        <div className="sky-logo-wrap">
           <span className="sky-logo block" role="img" aria-label="Sparkthunder" />
         </div>
-        <Heading id="about-heading" className="sky-copy mt-14 text-4xl font-black uppercase leading-none sm:text-6xl">
-          About Sparkthunder
-        </Heading>
-        <p className="sky-copy mt-7 max-w-2xl text-lg leading-relaxed text-bone/90 sm:text-xl sm:leading-relaxed">
-          Sparkthunder makes original worlds, each with its own heroes, villains and stories. Every universe has
-          its own home online, and MySparkthunder is the one account that carries you between them.
-        </p>
-        {showLink && (
-          <Link
-            href="/about"
-            className="sky-copy mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-volt transition-colors hover:text-bone"
-          >
-            Read our story
-          </Link>
-        )}
       </div>
 
+      <div aria-hidden="true" className="sky-embers absolute inset-0 z-[2] overflow-hidden">
+        {EMBERS.map((e, i) => (
+          <span
+            key={i}
+            className="sky-ember"
+            style={{
+              left: `${e.left}%`,
+              width: e.size,
+              height: e.size,
+              animationDelay: `${e.delay}s`,
+              animationDuration: `${e.duration}s`,
+              background: e.gold ? 'hsl(42 100% 70%)' : 'hsl(205 100% 92%)',
+              boxShadow: `0 0 ${e.size * 4}px ${e.gold ? 'hsl(42 100% 60%)' : 'hsl(205 100% 80%)'}`,
+              ['--drift' as string]: `${e.drift}px`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* film look: dark bars top and bottom, tight vignette */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-[4] h-24 bg-gradient-to-b from-black/80 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-28 bg-gradient-to-t from-ink to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.65)_100%)]" />
     </section>
   );
 }
