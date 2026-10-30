@@ -405,6 +405,21 @@ body::after {
 
 
 /* ---------- About sky ---------- */
+.sky-photo {
+  animation: sky-zoom 40s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.sky-live .sky-photo {
+  animation-play-state: running;
+}
+@keyframes sky-zoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12) translateY(-1.5%);
+  }
+}
 .sky-bg {
   background:
     radial-gradient(70% 55% at 50% 42%, hsl(222 60% 30% / 0.55), transparent 70%),
@@ -529,6 +544,7 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sky-photo,
   .sky-cloud,
   .sky-twinkle {
     animation: none !important;
