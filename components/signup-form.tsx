@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { getBrowserClient } from '@/lib/supabase/client';
+import { TERMS_VERSION } from '@/lib/terms';
 import { friendlyAuthError } from '@/lib/auth-errors';
 import { SITE_SLUG } from '@/lib/site';
 import { Button, Field, Notice, inputClass } from '@/components/ui';
@@ -31,7 +32,7 @@ export default function SignupForm() {
     const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
-      options: { data: { signup_site: SITE_SLUG, ...(displayName ? { display_name: displayName } : {}) } },
+      options: { data: { signup_site: SITE_SLUG, terms_accepted_at: new Date().toISOString(), terms_version: TERMS_VERSION, ...(displayName ? { display_name: displayName } : {}) } },
     });
 
     if (error) {

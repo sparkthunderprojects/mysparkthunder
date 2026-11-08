@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { safeNext } from '@/lib/safe-next';
+import { hasAcceptedTerms } from '@/lib/terms';
 import { redirectWithCookies, updateSession } from '@/lib/supabase/middleware';
 
 export async function middleware(request: NextRequest) {
@@ -9,6 +10,7 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isAccount = path === '/account' || path.startsWith('/account/');
   const isConsent = path === '/oauth/consent';
+  const isWelcome = path === '/welcome';
 
   if (isAccount && !user) {
     return redirectWithCookies(request, response, '/login');
@@ -19,6 +21,18 @@ export async function middleware(request: NextRequest) {
     const back = encodeURIComponent(path + request.nextUrl.search);
     return redirectWithCookies(request, response, `/login?next=${back}`);
   }
+  if (isWelcome) {
+    // First-time agreement screen: needs a signed-in person who has not agreed yet.
+    if (!user) return redirectWithCookies(request, response, '/login');
+    if (hasAcceptedTerms(user)) {
+      return redirectWithCookies(request, response, safeNext(request.nextUrl.searchParams.get('next')) ?? '/account');
+    }
+    return response;
+  }
+  if ((isAccount || isConsent) && user && !hasAcceptedTerms(user)) {
+    const back = encodeURIComponent(path + request.nextUrl.search);
+    return redirectWithCookies(request, response, `/welcome?next=${back}`);
+  }
   if (!isAccount && !isConsent && user && (path === '/login' || path === '/signup')) {
     const next = safeNext(request.nextUrl.searchParams.get('next'));
     return redirectWithCookies(request, response, next ?? '/account');
@@ -28,5 +42,5 @@ export async function middleware(request: NextRequest) {
 
 // Public pages are deliberately not matched, so they stay static and fast.
 export const config = {
-  matcher: ['/account/:path*', '/oauth/consent', '/login', '/signup'],
+  matcher: ['/account/:path*', '/oauth/consent', '/welcome', '/login', '/signup'],
 };
