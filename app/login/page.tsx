@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   noindex: true,
 });
 
-export default function LoginPage() {
+export default function LoginPage({ searchParams }: { searchParams?: { next?: string } }) {
   return (
     <AuthShell
       title="Sign in"
@@ -25,7 +25,7 @@ export default function LoginPage() {
         </>
       }
     >
-      <LoginForm />
+      <LoginForm next={searchParams?.next} />
     </AuthShell>
   );
 }

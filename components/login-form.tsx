@@ -5,10 +5,11 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { getBrowserClient } from '@/lib/supabase/client';
+import { safeNext } from '@/lib/safe-next';
 import { friendlyAuthError } from '@/lib/auth-errors';
 import { Button, Field, Notice, inputClass } from '@/components/ui';
 
-export default function LoginForm() {
+export default function LoginForm({ next }: { next?: string }) {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +26,7 @@ export default function LoginForm() {
       setBusy(false);
       return;
     }
-    router.push('/account');
+    router.push(safeNext(next) ?? '/account');
     router.refresh();
   }
 
