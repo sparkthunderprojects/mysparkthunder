@@ -214,8 +214,8 @@ export function PopupConsent({
       <p className="mt-4 flex items-start gap-2.5 text-xs leading-relaxed text-dim">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-ok" aria-hidden="true" />
         <span>
-          Your password is never shared with {clientName}. Only continue if you trust this site. You can read how
-          Sparkthunder handles your details in our{' '}
+          Your password is never shared with {clientName}. You can read how Sparkthunder handles your details in
+          our{' '}
           <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-volt hover:underline">
             Privacy Policy
           </a>{' '}
