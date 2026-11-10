@@ -39,7 +39,7 @@ export const CONNECTED_SITES: ConnectedSite[] = [
     name: 'Knightverge',
     url: 'https://knightverge.com',
     description: 'A shared comic universe of heroes, villains and legends.',
-    status: 'coming-soon',
+    status: 'available',
     accent: '#F0B429',
     logo: { src: '/universes/knightverge-logo.png', width: 900, height: 201 },
   },
