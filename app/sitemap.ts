@@ -6,6 +6,7 @@ import { UNIVERSES } from '@/lib/universes';
 const PAGES: { path: string; priority: number; changeFrequency: 'weekly' | 'monthly' | 'yearly' }[] = [
   { path: '', priority: 1, changeFrequency: 'weekly' },
   { path: '/universes', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/sites', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/news', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/press', priority: 0.4, changeFrequency: 'yearly' },
   ...UNIVERSES.map((u) => ({ path: `/universes/${u.slug}`, priority: 0.8, changeFrequency: 'weekly' as const })),

@@ -4,6 +4,7 @@ import { UNIVERSES } from '@/lib/universes';
 
 const LINKS = [
   { href: '/about', label: 'About' },
+  { href: '/sites', label: 'Sign-in sites' },
   { href: '/news', label: 'News' },
   { href: '/press', label: 'Press kit' },
   { href: '/help', label: 'Help' },
