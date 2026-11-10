@@ -15,6 +15,7 @@ export default function SignupPage() {
   return (
     <AuthShell
       title="Create your account"
+      popupIntro="One account for every Sparkthunder universe. It only takes a minute."
       intro="One account for every Sparkthunder universe."
       footer={
         <>

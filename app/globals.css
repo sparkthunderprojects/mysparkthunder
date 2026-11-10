@@ -797,3 +797,10 @@ html[data-popup='true'] .auth-panel {
 html[data-popup='true'] .auth-title {
   font-size: 2.25rem;
 }
+
+/* The branded sign-in window: a soft glow behind one clean card. */
+.popup-bg {
+  background:
+    radial-gradient(70% 45% at 50% 0%, hsl(var(--volt) / 0.14), transparent 70%),
+    linear-gradient(180deg, hsl(var(--ink)), hsl(var(--panel)));
+}

@@ -14,6 +14,7 @@ export default function ConsentPage({ searchParams }: { searchParams?: { authori
   return (
     <AuthShell
       title="Approve sign-in"
+      popupHideHeading
       intro="A Sparkthunder site is asking to sign you in with your MySparkthunder account."
     >
       <ConsentView authorizationId={searchParams?.authorization_id ?? ''} />

@@ -15,6 +15,8 @@ export default function LoginPage({ searchParams }: { searchParams?: { next?: st
   return (
     <AuthShell
       title="Sign in"
+      popupTitle="Sign in to continue"
+      popupIntro="Use your MySparkthunder account. The site you came from never sees your password."
       intro="Use your MySparkthunder account. It is the same one you use on every Sparkthunder site."
       footer={
         <>
