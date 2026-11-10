@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/json-ld';
 import HeroBanners from '@/components/hero-banners';
+import AccountFeatures from '@/components/account-features';
 import AccountIntro from '@/components/account-intro';
 import LogoStrip from '@/components/logo-strip';
 import NameBand from '@/components/name-band';
@@ -21,33 +22,6 @@ export const metadata: Metadata = pageMetadata({
   path: '',
   absoluteTitle: true,
 });
-
-const HOLDS = [
-  {
-    name: 'Favourites',
-    text: 'Save characters, comics and places in each universe and find them again on any device.',
-  },
-  {
-    name: 'Reading history',
-    text: 'Pick up where you left off. Your history is kept separately for every universe.',
-  },
-  {
-    name: 'Wish list',
-    text: 'Keep track of the Sparkthunder Shop products you want.',
-  },
-  {
-    name: 'Order history',
-    text: 'See your Sparkthunder Shop orders together in one place.',
-  },
-  {
-    name: 'One password',
-    text: 'The same email and password work on every Sparkthunder site.',
-  },
-  {
-    name: 'Your details',
-    text: 'Change your name, email and password once, and it applies everywhere.',
-  },
-];
 
 export default function HomePage() {
   return (
@@ -83,29 +57,7 @@ export default function HomePage() {
 
       <NameBand />
 
-      <section
-        aria-labelledby="holds-heading"
-        className="border-y border-line bg-gradient-to-b from-panel to-ink"
-      >
-        <div className="w-full px-5 sm:px-8 lg:px-14 py-24">
-          <h2 id="holds-heading" className="max-w-3xl text-5xl font-black uppercase leading-[0.92] sm:text-7xl">
-            What your account holds
-          </h2>
-          <dl className="mt-14 divide-y divide-line border-y border-line">
-            {HOLDS.map((item) => (
-              <div
-                key={item.name}
-                className="group grid gap-2 py-6 transition-colors hover:bg-volt/[0.04] md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:items-baseline md:gap-10 md:px-3"
-              >
-                <dt className="text-3xl font-extrabold transition-colors group-hover:text-volt sm:text-4xl">
-                  {item.name}
-                </dt>
-                <dd className="max-w-prose leading-relaxed text-dim">{item.text}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+      <AccountFeatures />
 
       <section aria-labelledby="news-heading" className="w-full px-5 py-24 sm:px-8 lg:px-14">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
