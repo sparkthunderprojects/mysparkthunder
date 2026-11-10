@@ -774,3 +774,26 @@ body::after {
     animation: none;
   }
 }
+
+
+/* ---------- Sign-in popup ----------
+   Another Sparkthunder site opens sign-in in a small named window. In that
+   window we hide the site header, footer and cookie notice and show just the form. */
+html[data-popup='true'] body > header,
+html[data-popup='true'] body > footer,
+html[data-popup='true'] [aria-label='Cookie notice'],
+html[data-popup='true'] .auth-stage {
+  display: none !important;
+}
+html[data-popup='true'] .auth-shell {
+  display: block;
+  min-height: 100svh;
+}
+html[data-popup='true'] .auth-panel {
+  min-height: 100svh;
+  max-width: 28rem;
+  padding: 2rem 1.5rem;
+}
+html[data-popup='true'] .auth-title {
+  font-size: 2.25rem;
+}

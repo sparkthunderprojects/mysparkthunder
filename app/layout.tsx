@@ -29,6 +29,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <body>
+        {/* When another Sparkthunder site opens sign-in in a popup window, drop the site chrome. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(window.opener&&window.name==='sparkthunder-signin')document.documentElement.setAttribute('data-popup','true')}catch(e){}",
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-volt focus:px-4 focus:py-2 focus:text-ink"
