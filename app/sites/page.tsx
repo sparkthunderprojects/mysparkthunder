@@ -27,7 +27,7 @@ export default function SitesPage() {
       '@type': 'ListItem',
       position: index + 1,
       name: site.name,
-      url: site.url,
+      ...(site.url ? { url: site.url } : {}),
     })),
   };
 
@@ -116,19 +116,17 @@ function SiteCard({ site }: { site: (typeof CONNECTED_SITES)[number] }) {
               />
               <span className={live ? 'text-bone' : 'text-dim'}>{live ? 'Sign in available' : 'Coming soon'}</span>
             </p>
-            <h3 className="mt-5">
+            <h3 className="mt-5 flex h-28 items-center">
               {site.logo ? (
-                <>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={site.logo.src}
-                    alt={site.name}
-                    width={site.logo.width}
-                    height={site.logo.height}
-                    loading="lazy"
-                    className="h-auto w-full max-w-[14rem]"
-                  />
-                </>
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={site.logo.src}
+                  alt={site.name}
+                  width={site.logo.width}
+                  height={site.logo.height}
+                  loading="lazy"
+                  className="max-h-28 w-auto max-w-full object-contain object-left"
+                />
               ) : (
                 <span className="text-4xl font-black uppercase leading-[0.9]">{site.name}</span>
               )}
@@ -136,7 +134,7 @@ function SiteCard({ site }: { site: (typeof CONNECTED_SITES)[number] }) {
             <p className="mt-4 text-sm leading-relaxed text-bone/75">{site.description}</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            {live ? (
+            {live && site.url ? (
               <ButtonLink href={site.url} className="px-4 py-2.5">
                 Go to {siteHost(site.url)}
               </ButtonLink>
@@ -148,7 +146,7 @@ function SiteCard({ site }: { site: (typeof CONNECTED_SITES)[number] }) {
                 Sign-in opens soon
               </span>
             )}
-            {!live && (
+            {!live && site.url && (
               <a
                 href={site.url}
                 className="text-sm font-semibold text-bone/80 underline-offset-4 hover:text-volt hover:underline"

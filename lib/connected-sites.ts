@@ -4,8 +4,8 @@ export interface ConnectedSite {
   /** Matches the `site` value used elsewhere (memberships, favourites) where one exists. */
   slug: string;
   name: string;
-  /** Public address of the site. */
-  url: string;
+  /** Public address of the site, or null until it is confirmed. */
+  url: string | null;
   /** Short line shown on the card. */
   description: string;
   /** 'available' = the "Sign in with My Sparkthunder" button is live on that site. */
@@ -50,6 +50,7 @@ export const CONNECTED_SITES: ConnectedSite[] = [
     description: 'The home of our tabletop roleplaying games.',
     status: 'coming-soon',
     accent: '#D2475F',
+    logo: { src: '/universes/roll-combat-logo.png', width: 801, height: 635 },
   },
   {
     slug: 'sparkthunder-shop',
@@ -66,6 +67,16 @@ export const CONNECTED_SITES: ConnectedSite[] = [
     description: 'Another world from the Sparkthunder family.',
     status: 'coming-soon',
     accent: '#E0A458',
+    logo: { src: '/universes/vast-sands-logo.png', width: 1000, height: 558 },
+  },
+  {
+    slug: 'occult-inc',
+    name: 'Occult Inc',
+    url: null,
+    description: 'An original Sparkthunder universe, in development.',
+    status: 'coming-soon',
+    accent: '#8B6CF0',
+    logo: { src: '/universes/occult-inc-logo.png', width: 900, height: 329 },
   },
 ];
 
