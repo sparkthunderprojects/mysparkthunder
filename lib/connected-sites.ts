@@ -72,7 +72,7 @@ export const CONNECTED_SITES: ConnectedSite[] = [
   {
     slug: 'occult-inc',
     name: 'Occult Inc',
-    url: null,
+    url: 'https://occultinc.com',
     description: 'An original Sparkthunder universe, in development.',
     status: 'coming-soon',
     accent: '#8B6CF0',
