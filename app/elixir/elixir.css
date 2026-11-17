@@ -1,0 +1,51 @@
+/*
+  Elixir staff dashboard styles. Everything is scoped under .elixir-admin so nothing
+  here can change the look of the rest of the site. The admin area is a light panel
+  inside the dark site because it is a work tool full of tables and forms.
+*/
+.elixir-admin {
+  @apply bg-slate-50 text-slate-900;
+  font-family: 'Hanken Grotesk Variable', system-ui, sans-serif;
+}
+.elixir-admin h1,
+.elixir-admin h2,
+.elixir-admin h3,
+.elixir-admin h4 {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+.elixir-admin .panel {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+.elixir-admin .btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500/40 disabled:cursor-not-allowed disabled:opacity-50;
+}
+.elixir-admin .btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500/40 disabled:cursor-not-allowed disabled:opacity-50 bg-violet-600 text-white shadow-sm hover:bg-violet-700 active:bg-violet-800;
+}
+.elixir-admin .btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500/40 disabled:cursor-not-allowed disabled:opacity-50 border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 active:bg-slate-100;
+}
+.elixir-admin .btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500/40 disabled:cursor-not-allowed disabled:opacity-50 text-slate-600 hover:bg-slate-100;
+}
+.elixir-admin .input {
+  @apply w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20;
+}
+.elixir-admin .label {
+  @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+.elixir-admin .chip {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+}
+.elixir-admin .fade-in {
+  animation: elixir-fade-in 0.3s ease;
+}
+@keyframes elixir-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* The site draws a film-grain overlay; keep inputs readable on top of it. */
+.elixir-admin :focus-visible {
+  outline-color: theme('colors.violet.500');
+}

@@ -8,12 +8,16 @@ export async function middleware(request: NextRequest) {
   if (!configured) return response;
 
   const path = request.nextUrl.pathname;
-  const isAccount = path === '/account' || path.startsWith('/account/');
+  // The Elixir staff area needs the same sign-in and agreement as the account area.
+  // (Whether the person is actually staff is checked by the database.)
+  const isAccount =
+    path === '/account' || path.startsWith('/account/') || path === '/elixir' || path.startsWith('/elixir/');
   const isConsent = path === '/oauth/consent';
   const isWelcome = path === '/welcome';
 
   if (isAccount && !user) {
-    return redirectWithCookies(request, response, '/login');
+    const isElixir = path === '/elixir' || path.startsWith('/elixir/');
+    return redirectWithCookies(request, response, isElixir ? '/login?next=/elixir' : '/login');
   }
   if (isConsent && !user) {
     // Another Sparkthunder site sent this person here to approve a sign-in.
@@ -42,5 +46,5 @@ export async function middleware(request: NextRequest) {
 
 // Public pages are deliberately not matched, so they stay static and fast.
 export const config = {
-  matcher: ['/account/:path*', '/oauth/consent', '/welcome', '/login', '/signup'],
+  matcher: ['/account/:path*', '/elixir/:path*', '/elixir', '/oauth/consent', '/welcome', '/login', '/signup'],
 };
