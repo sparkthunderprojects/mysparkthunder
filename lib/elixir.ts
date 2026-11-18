@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getBrowserClient } from "@/lib/supabase/client";
+import { getElixirClient } from "@/lib/elixir-client";
 
 // ---------------------------------------------------------------------------
 // Types (mirror the jsonb returned by the public.elixir_* functions)
@@ -137,7 +137,7 @@ export interface Config {
 // ---------------------------------------------------------------------------
 
 async function rpc<T>(fn: string, args?: Record<string, unknown>): Promise<T> {
-  const { data, error } = await getBrowserClient().rpc(fn, args);
+  const { data, error } = await getElixirClient().rpc(fn, args);
   if (error) throw new Error(error.message);
   return data as T;
 }

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { getBrowserClient } from '@/lib/supabase/client';
+import { getElixirClient } from '@/lib/elixir-client';
 import { api, type Staff } from '@/lib/elixir';
 import { Spinner } from './ui';
 
@@ -32,7 +32,7 @@ export default function ElixirSession({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let active = true;
-    const supabase = getBrowserClient();
+    const supabase = getElixirClient();
     supabase.auth.getUser().then(async ({ data }) => {
       if (!active) return;
       if (!data.user) {
@@ -74,7 +74,7 @@ export default function ElixirSession({ children }: { children: ReactNode }) {
   }
 
   const signOut = async () => {
-    await getBrowserClient().auth.signOut();
+    await getElixirClient().auth.signOut();
     router.push('/');
     router.refresh();
   };

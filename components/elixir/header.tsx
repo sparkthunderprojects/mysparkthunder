@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ExternalLink, LogOut } from 'lucide-react';
-import { getBrowserClient } from '@/lib/supabase/client';
+import { getElixirClient } from '@/lib/elixir-client';
 
 /** The Elixir Points header, used instead of the My Sparkthunder one. */
 export default function ElixirHeader() {
@@ -13,7 +13,7 @@ export default function ElixirHeader() {
 
   useEffect(() => {
     let active = true;
-    getBrowserClient()
+    getElixirClient()
       .auth.getUser()
       .then(({ data }) => {
         if (active) setEmail(data.user?.email ?? null);
@@ -24,7 +24,7 @@ export default function ElixirHeader() {
   }, []);
 
   const signOut = async () => {
-    await getBrowserClient().auth.signOut();
+    await getElixirClient().auth.signOut();
     router.push('/');
     router.refresh();
   };

@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { Check, Copy, KeyRound, Plus, Save, ShieldAlert } from "lucide-react";
 import { api, errMsg, useAsync, type BrandRow, type Config, type TierRow } from "@/lib/elixir";
-import { SUPABASE_URL as supabaseUrl } from "@/lib/config";
+import { SUPABASE_URL } from "@/lib/config";
+
+// Shown to brand developers, so it must follow Elixir if it moves to its own project.
+const supabaseUrl = process.env.NEXT_PUBLIC_ELIXIR_SUPABASE_URL || SUPABASE_URL;
 import { ErrorNote, Loading, Modal, Spinner, Toast, Toggle } from "./ui";
 
 // ---------------------------------------------------------------------------
