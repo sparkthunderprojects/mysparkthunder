@@ -13,28 +13,16 @@ import { BrandsView, SettingsView } from "./AdminViews";
 type View = "overview" | "members" | "rewards" | "adjustments" | "brands" | "settings";
 
 export function ElixirDashboard() {
-  const { staff, signOut } = useAuth();
+  const { staff } = useAuth();
   const isAdmin = staff?.role === "admin";
   const [view, setView] = useState<View>("overview");
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 text-white shadow-lg shadow-violet-500/20">
-            <Crown className="h-6 w-6" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Elixir Points</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">One points balance across every Sparkthunder brand</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3 text-sm">
-          <span className="text-slate-500">{staff?.email}</span>
-          <span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-semibold capitalize text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">{staff?.role}</span>
-          <button onClick={signOut} className="btn-secondary"><LogOut className="h-4 w-4" />Sign out</button>
-        </div>
-      </div>
+      <p className="text-sm text-slate-500">
+        One points balance across every Sparkthunder brand. Signed in as {staff?.email}{" "}
+        <span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-semibold capitalize text-violet-700">{staff?.role}</span>
+      </p>
 
       <div className="flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-800">
         <Tab id="overview" view={view} set={setView} icon={<TrendingUp className="h-4 w-4" />} label="Overview" />

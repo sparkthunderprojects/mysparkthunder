@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './elixir.css';
+import ElixirHeader from '@/components/elixir/header';
 
 // Staff-only area, kept out of search results.
 export const metadata: Metadata = {
@@ -8,5 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function ElixirLayout({ children }: { children: React.ReactNode }) {
-  return <div className="elixir-admin min-h-[80vh]">{children}</div>;
+  return <div className="elixir-admin min-h-screen">
+      <ElixirHeader />
+      {children}
+    </div>;
 }

@@ -8,6 +8,7 @@ import { SITE_URL } from '@/lib/config';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/site';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
+import SiteChrome from '@/components/site-chrome';
 import CookieNotice from '@/components/cookie-notice';
 
 export const metadata: Metadata = {
@@ -42,9 +43,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteChrome>
+          <SiteHeader />
+        </SiteChrome>
         <main id="main">{children}</main>
-        <SiteFooter />
+        <SiteChrome>
+          <SiteFooter />
+        </SiteChrome>
         <CookieNotice />
       </body>
     </html>
